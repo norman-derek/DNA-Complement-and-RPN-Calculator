@@ -2,7 +2,7 @@
     2364922\
     norman@chapman.edu\
     CPSC-350-03\
-    Assignment 4\
+    Assignment 4
 
 2)  DNAComplement.h\
     DNAComplement.cpp\
@@ -14,7 +14,7 @@
     GenStack.h\
     listnode.h\
     main.cpp\
-    Makefile\
+    Makefile
 
 3)  N/A
 
@@ -24,4 +24,4 @@
 5)  To compile: \
         make all \
     To Run: \
-        ./assignment4.out \
+        ./assignment4.out 
