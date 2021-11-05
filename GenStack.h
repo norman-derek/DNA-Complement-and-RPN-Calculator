@@ -1,3 +1,15 @@
+/* 
+Derek Norman
+2364922
+norman@chapman.edu
+CPSC-350-03
+Assignment 4
+*/
+
+/* 
+* This file is a template class for a stack 
+* and is implemented using a doubly linked list
+*/
 #ifndef GENSTACK_H
 #define GENSTACK_H
 
@@ -29,6 +41,7 @@ class GenStack{
         T top;
 };
 
+
 template <class T>
 GenStack<T>::GenStack(){ //constructor
     top = -1;
@@ -41,6 +54,10 @@ GenStack<T>::~GenStack(){ //destructor
     delete myList;
 }
 
+/*
+* This is the push method, this class inserts a node to the top/front of the stack.
+* push takes a single parameter of T data. T representing the data type chosen when instatiating the GenStack class and data being the data inserted to the stack
+*/
 template <class T>
 void GenStack<T>::push(T data){ //inserts data at the top of the stack
     // dont need to check if full because linked lists are dynamic
@@ -48,6 +65,10 @@ void GenStack<T>::push(T data){ //inserts data at the top of the stack
     myList->insertFront(data);
 }
 
+/*
+* This is the pop method, the pop method removes the top/front node from the stack since stack are last in, first out and the last inserted node is at the top of the stack and deincrements size
+* pop returns the node at the front/top of the stack 
+*/
 template <class T>
 T GenStack<T>::pop(){ // removes and returns data at the top of the stack
     //check if empty
@@ -58,6 +79,10 @@ T GenStack<T>::pop(){ // removes and returns data at the top of the stack
     return myList->removeFront();
 }
 
+/*
+* This method is called peek and is similar to pop but does not delete the top/front node but only returns the value of the top node
+* This method returns temp which represents the value of the node at the top of the stack
+*/
 template <class T>
 T GenStack<T>::peek(){ //returns the data at the top of the stack but does not remove
     //check if empty
@@ -71,17 +96,27 @@ T GenStack<T>::peek(){ //returns the data at the top of the stack but does not r
 
 }
 
-
+/*
+* The isEmpty method 
+* returns a boolean representing if the stack is empty
+*/
 template <class T>
 bool GenStack<T>::isEmpty(){ //checks if stack is empty
     return (mSize == 0);
 }
 
+/*
+* This method is getSize
+* Returns an integer that represents the size of the stack
+*/
 template <class T>
 int GenStack<T>::getSize(){ //returns the size of the stack
     return (mSize);
 }
 
+/*
+* This method is printStack and prints a visual representation of the stack
+*/
 template <class T>
 void GenStack<T>::printStack(){ //prints the stack
     myList->printList(true);

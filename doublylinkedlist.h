@@ -1,3 +1,14 @@
+/* 
+Derek Norman
+2364922
+norman@chapman.edu
+CPSC-350-03
+Assignment 4
+*/
+
+/*
+* Template class for a doubly linked list
+*/
 #ifndef DOUBLYLINKEDLIST_H
 #define DOUBLYLINKEDLIST_H
 
@@ -11,22 +22,22 @@ class DoublyLinkedList{
         unsigned int size;
 
     public:
-        DoublyLinkedList();
-        ~DoublyLinkedList();
+        DoublyLinkedList(); //constructor
+        ~DoublyLinkedList(); //destructor
 
-        void insertFront(T d);
-        void insertBack(T d);
-        T removeFront();
-        T removeBack();
-        T removeNode(T value);
-        T find(T value);
-        bool isEmpty();
-        unsigned int getSize();
-        void printList(bool isPrintLink);
+        void insertFront(T d); //inserts node at front of the list
+        void insertBack(T d); //inserts node at the back of the list
+        T removeFront(); //removes the node at the front of the list
+        T removeBack(); //removes the node at the back of the list
+        T removeNode(T value); //removes a node with the given the value/data
+        T find(T value); //find a node given the value/data
+        bool isEmpty(); //boolean returns if the list is empty or not
+        unsigned int getSize(); //returns the size of the list
+        void printList(bool isPrintLink); //prints a visual representation of the doubly linked list
 };
 
 template <class T>
-DoublyLinkedList<T>::DoublyLinkedList(){
+DoublyLinkedList<T>::DoublyLinkedList(){ //constructor
     //empty list
     size = 0;
     front = NULL;
@@ -35,7 +46,7 @@ DoublyLinkedList<T>::DoublyLinkedList(){
 }
 
 template <class T>
-DoublyLinkedList<T>::~DoublyLinkedList(){
+DoublyLinkedList<T>::~DoublyLinkedList(){ //destructor
     //research 
     //hint: theres a loop
     ListNode<T> *curr = front;
@@ -47,8 +58,12 @@ DoublyLinkedList<T>::~DoublyLinkedList(){
     front = 0;
 }
 
+/*
+* This method is insertFront and inserts a node at the front of the list and increments the size
+* This method takes a single parameter d representing the data to be inserted into the list
+*/
 template <class T>
-void DoublyLinkedList<T>::insertFront(T d){
+void DoublyLinkedList<T>::insertFront(T d){ 
     ListNode<T> *node = new ListNode<T>(d);
 
     if(isEmpty()){
@@ -61,6 +76,10 @@ void DoublyLinkedList<T>::insertFront(T d){
     ++size;
 }
 
+/*
+* This is the insertBack method, insertBack inserts a node in the back of the list
+* This method has a single parameter d representing the data to be inserted into the list
+*/
 template <class T>
 void DoublyLinkedList<T>::insertBack(T d){
     ListNode<T> *node = new ListNode<T>(d);
@@ -75,6 +94,10 @@ void DoublyLinkedList<T>::insertBack(T d){
     ++size;
 }
 
+/*
+* This method is calle removeFront, this method removes the node at the front of the list
+* This method returns data representing the data of the node removed from the front of the list
+*/
 template <class T>
 T DoublyLinkedList<T>::removeFront(){
     if(isEmpty()){
@@ -100,6 +123,10 @@ T DoublyLinkedList<T>::removeFront(){
     
 }
 
+/*
+* This method is removeBack, this method removes the node at the back of the list
+* This method returns data representing the data of the node removed from the back of the list
+*/
 template <class T>
 T DoublyLinkedList<T>::removeBack(){
     if(isEmpty()){
@@ -123,6 +150,10 @@ T DoublyLinkedList<T>::removeBack(){
     return data;
 }
 
+/*
+* This method is called find, this method finds a node in the doubly linked list given the data/value of the node
+* This method returns temp representing the data/value from the node found in the doubly linked list
+*/
 template <class T>
 T DoublyLinkedList<T>::find(T value){
     int pos = -1;
@@ -136,24 +167,38 @@ T DoublyLinkedList<T>::find(T value){
         }
         curr = curr->next;
     }
-    //check if curr is NULL which signifies value not in linked list
+    //check if curr is NULL which signifies value not in doubly linked list
     if(curr == NULL){
         pos = -1; // or -1
     }
 
-    return pos;
+    T temp = curr->data;
+    delete curr;
+    return temp;
 }
 
+/*
+* This method is called isEmpty, this method indicated if the doubly linked list is empty or not
+* returns a boolean representing if the list is empty or not
+*/
 template <class T>
 bool DoublyLinkedList<T>::isEmpty(){
     return (size == 0);
 }
 
+/*
+* This method is getSize, which returns the size of the list
+* returns size representing the size of the list
+*/
 template <class T>
 unsigned int DoublyLinkedList<T>::getSize(){
     return size;
 }
 
+/*
+* This method is called removeNode, that removes a node from the list given the value/data of the node
+* Takes a single parameter value representing the value/data of the node to be removed from the list 
+*/
 template <class T>
 T DoublyLinkedList<T>::removeNode(T value){ //removes a specified node in the list or 
     if(isEmpty()){
@@ -200,6 +245,10 @@ T DoublyLinkedList<T>::removeNode(T value){ //removes a specified node in the li
 
 }
 
+/*
+* This method is printList, this method prints a visual representation of the list
+* Takes a parameter called printLink representing whether or not to print the list
+*/
 template <class T>
 void DoublyLinkedList<T>::printList(bool printLink)
 {
