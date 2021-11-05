@@ -15,13 +15,14 @@ Assignment 4
 #define DNACOMPLEMENT_H
 
 #include "GenStack.h"
+#include "FileProcessor.h"
 #include <fstream>
 
 class DNAComplement {
     public:
         DNAComplement(); //constructor
         ~DNAComplement(); //destructor
-        void processFile(); //process a text file containing a DNA sequence and assigns it to a string
+        void outputFileDNA(); //outputs the dna sequence, complement, and reverse complement to a text file
         string complement(); //calculates the complement of the DNA sequence
         string reverseComplement(); //calculates the reverse complement of the DNA sequence
     private:

@@ -25,7 +25,8 @@ int main(int argc, char** argv) //main method
         cout << "Result: " << rpnCalc->createStack() << endl;
     } else if (mode == "DNA") {
         DNAComplement *dna = new DNAComplement();
-        dna->processFile();
+        cin.ignore(); //ignore last input because we take input again later in outputFileDNA()
+        dna->outputFileDNA();
     } else {
         throw runtime_error("Invalid mode choice. Please try again!");
     }

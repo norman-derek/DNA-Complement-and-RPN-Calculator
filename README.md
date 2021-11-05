@@ -8,6 +8,8 @@
     DNAComplement.cpp
     RPNCalc.h
     RPNCalc.cpp
+    FileProcessor.h
+    FileProcessor.cpp
     doublylinkedlist.h
     GenStack.h
     listnode.h
@@ -16,8 +18,8 @@
 
 3)  N/A
 
-4)  https://www.geeksforgeeks.org/converting-strings-numbers-cc/
-    https://www.javatpoint.com/cpp-int-to-string
+4)  https://www.geeksforgeeks.org/converting-strings-numbers-cc/, 
+    https://www.javatpoint.com/cpp-int-to-string,
 
 5)  To compile:
         make all

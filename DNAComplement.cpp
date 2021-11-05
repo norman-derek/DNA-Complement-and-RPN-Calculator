@@ -13,6 +13,7 @@ Assignment 4
 
 #include "DNAComplement.h"
 
+
 DNAComplement::DNAComplement(){ //constructor
     mDNASequence = "";
     stack = new GenStack<char>();
@@ -23,28 +24,14 @@ DNAComplement::~DNAComplement(){ //destructor
 }
 
 /*
-* This method is processFile, it reads a text file with a DNA sequence and outputs a txt file containing the original sequence, complement, and reverse complement.
+* This method is outputFile, it outputs a txt file containing the original sequence, complement, and reverse complement.
 */
-void DNAComplement::processFile(){
-    cout << "Please provide file path" << endl;
-    string filePath;
-    cin >> filePath;
-    if(filePath.length() < 4) { //checks if file name length is 3 or less which is not possible with .txt extension
-        cout << "please use a valid file name with .txt" << endl;
-        processFile(); //recalls function so user can input correct file
-    }
-    else if(filePath.substr(filePath.length() - 4) != ".txt"){ //check if file has .txt extension
-        cout << "please input a .txt file for the input" << endl;
+void DNAComplement::outputFileDNA(){
 
-        processFile();
-    }
-    
-    ofstream dnaOutput("dnaoutput.txt"); //opens file for writing
-    ifstream dnaInput(filePath); //opens input fule for reading
+    FileProcessor *f = new FileProcessor();
+    mDNASequence = f->processFile(); //process the file and assigns the text from the file to mDNASequence
 
-    if(dnaInput.is_open()){ //while input file is open 
-        getline(dnaInput, mDNASequence); //gets the DNA sequence
-    }
+    ofstream dnaOutput("dnaoutput.txt");
 
     cout << endl; //to make output a little neater
     dnaOutput << "Sequence: " << mDNASequence << endl; //writes the dna sequence to output file
@@ -55,8 +42,8 @@ void DNAComplement::processFile(){
     cout << "Reverse Complement: " << reverseComplement() << endl; //prints reverse complement to the console
     cout << endl; //to make output a little neater
 
-    dnaInput.close();
     dnaOutput.close();
+    delete f;
 }
 
 /*
@@ -65,6 +52,7 @@ void DNAComplement::processFile(){
 */
 string DNAComplement::complement(){
     string complement = "";
+
     for (int i = 0; i < mDNASequence.length(); ++i){
         if(mDNASequence[i] == 'A'){ //if the char is A
             complement += 'T'; //complement of A is T
